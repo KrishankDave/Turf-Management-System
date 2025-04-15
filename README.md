@@ -28,25 +28,65 @@ This diagram would be used by database designers and developers to implement the
 
 # EXPLANATION OF THE CODE 
 
-1. Creates a new database called `TurfBookingDB`
-2. Creates six main tables:
-   - `Users`: Stores user information (ID, name, age, email, phone, password)
-   - `Owners`: Stores turf owner details (ID, name, email, phone, password, location)
-   - `Turfs`: Stores information about available turfs (ID, name, location, price, sport type, owner ID)
-   - `Bookings`: Tracks reservations (ID, user ID, turf ID, date, time, schedule)
-   - `Payments`: Records transaction details (ID, booking ID, amount, status)
-   - `Reviews`: Stores user feedback (ID, user ID, turf ID, comment, rating)
+## Database Creation and Structure
+The script first creates a new database called `TurfBookingDB` and then builds the following table structure:
 
-3. Inserts sample data into most tables
-4. Includes several example queries showing how to:
-   - View all users and turfs
-   - Create a new booking
-   - Process a payment
-   - Leave a review
-   - Filter bookings by user
-   - Check payment status
-   - Calculate average ratings
-   - Find turfs by owner
-   - View reviews for specific turfs
+1. **Users Table**
+   - Primary key: `user_id` (auto-incrementing)
+   - Stores personal information: name, age, email, phone, password
+   - Sample data for three users is inserted
 
-The script establishes proper relationships between tables using foreign keys to maintain data integrity throughout the system.
+2. **Owners Table**
+   - Primary key: `owner_id` (auto-incrementing)
+   - Contains owner information: name, email, phone, password, location
+   - Sample data for two turf owners is inserted
+
+3. **Turfs Table**
+   - Primary key: `turf_id` (auto-incrementing)
+   - Contains turf details: name, location, hourly price, sport type
+   - Foreign key: `owner_id` links to the Owners table
+   - Sample data for three different turfs is inserted
+
+4. **Bookings Table**
+   - Primary key: `booking_id` (auto-incrementing)
+   - Links users to turfs with booking details: date, time, schedule
+   - Foreign keys: `user_id` and `turf_id` maintain relationships
+   - Sample data for three bookings is inserted
+
+5. **Payments Table**
+   - Primary key: `payment_id` (auto-incrementing)
+   - Tracks payment status and amount for each booking
+   - Foreign key: `booking_id` links to the Bookings table
+   - Sample data shows both paid and pending transactions
+
+6. **Reviews Table**
+   - Primary key: `review_id` (auto-incrementing)
+   - Stores user feedback with comments and numerical ratings
+   - Foreign keys: `user_id` and `turf_id` link reviews to users and turfs
+
+## Example Operations
+The script demonstrates common database operations:
+
+1. **Data Retrieval Operations**
+   - Fetching all users and turfs
+   - Viewing bookings for a specific user
+   - Checking payments with "Paid" status
+   - Finding turfs owned by a particular owner
+   - Viewing reviews for a specific turf
+
+2. **Data Manipulation Operations**
+   - Creating a new booking record
+   - Processing a payment
+   - Adding a user review
+
+3. **Data Analysis Operations**
+   - Calculating average ratings for each turf using aggregate functions
+
+## Relational Design
+The database follows proper relational design principles with:
+- Primary keys for unique identification of records
+- Foreign keys to maintain referential integrity between tables
+- Appropriate data types for each field
+- One-to-many relationships properly established (e.g., one user can make multiple bookings)
+
+This database structure effectively supports all core functionality needed for a turf booking system, including user management, booking management, payment processing, and review collection.
