@@ -24,3 +24,29 @@ The diagram uses traditional ERD notation with:
 - Lines connecting related entities with cardinality markers (1, M)
 
 This diagram would be used by database designers and developers to implement the database structure for this turf booking system, ensuring proper data organization and relationships between different components of the system.
+
+
+# EXPLANATION OF THE CODE 
+
+1. Creates a new database called `TurfBookingDB`
+2. Creates six main tables:
+   - `Users`: Stores user information (ID, name, age, email, phone, password)
+   - `Owners`: Stores turf owner details (ID, name, email, phone, password, location)
+   - `Turfs`: Stores information about available turfs (ID, name, location, price, sport type, owner ID)
+   - `Bookings`: Tracks reservations (ID, user ID, turf ID, date, time, schedule)
+   - `Payments`: Records transaction details (ID, booking ID, amount, status)
+   - `Reviews`: Stores user feedback (ID, user ID, turf ID, comment, rating)
+
+3. Inserts sample data into most tables
+4. Includes several example queries showing how to:
+   - View all users and turfs
+   - Create a new booking
+   - Process a payment
+   - Leave a review
+   - Filter bookings by user
+   - Check payment status
+   - Calculate average ratings
+   - Find turfs by owner
+   - View reviews for specific turfs
+
+The script establishes proper relationships between tables using foreign keys to maintain data integrity throughout the system.
